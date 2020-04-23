@@ -39,5 +39,6 @@
     <string name="event_location">Location</string>
     <string name="notes">Event Notes</string>
     <string name="event_invite">Invite</string>
+    <string name="event_add_alert">Add</string>
 
 </resources>

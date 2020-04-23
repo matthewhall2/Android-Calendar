@@ -26,13 +26,14 @@ public class AlertsAdapter extends RecyclerView.Adapter<AlertsAdapter.ViewHolder
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AlertsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(layout.content_alerts, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AlertsAdapter.ViewHolder holder, int position) {
+
 
     }
 
