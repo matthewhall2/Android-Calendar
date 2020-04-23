@@ -64,7 +64,7 @@ public class ViewEventsAdapter extends  RecyclerView.Adapter<ViewEventsAdapter.V
             super(itemView);
             name = itemView.findViewById(R.id.eventText);
             c = itemView.findViewById(R.id.eventsView);
-            share = itemView.findViewById(R.id.btn_share_event);
+          //  share = itemView.findViewById(R.id.btn_share_event);
             delete = itemView.findViewById(R.id.btn_delete_event);
             this.clicks = onEventClickListener;
             itemView.setOnClickListener(new View.OnClickListener() {

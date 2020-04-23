@@ -37,5 +37,7 @@
     <string name="event_reminder">Reminders</string>
     <string name="event_repeat">Repeat</string>
     <string name="event_location">Location</string>
+    <string name="notes">Event Notes</string>
+    <string name="event_invite">Invite</string>
 
 </resources>
