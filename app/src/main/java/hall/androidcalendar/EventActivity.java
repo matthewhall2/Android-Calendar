@@ -1,20 +1,12 @@
 package hall.androidcalendar;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-public class Addeventmenu extends AppCompatActivity {
+public class EventActivity extends AppCompatActivity {
     private EditText event_name;
     private TextView start;
     private TextView end;
@@ -25,7 +17,7 @@ public class Addeventmenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_event);
+        setContentView(R.layout.activity_event);
        // event_name = findViewById(R.id.tv_event_title);
        // start = findViewById(R.id.tv_start);
       //  startTime = findViewById(R.id.tv_start_date);

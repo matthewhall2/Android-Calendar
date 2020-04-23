@@ -41,9 +41,9 @@ public abstract class MenuActivity extends AppCompatActivity implements BottomNa
             if (itemId == R.id.action_month) {
                 startActivity(new Intent(this, MonthViewActivity.class));
             } else if (itemId == R.id.action_week) {
-                startActivity(new Intent(this, WeekActivity.class));
+             //   startActivity(new Intent(this, WeekActivity.class));
             } else if (itemId == R.id.action_day) {
-                startActivity(new Intent(this, DateActivity.class));
+           //     startActivity(new Intent(this, DateActivity.class));
             } else if (itemId == R.id.action_search) {
                // startActivity(new Intent(this, SearchActivity.class));
             }else if(itemId == R.id.action_logout){

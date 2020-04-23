@@ -203,8 +203,8 @@ public class MonthViewActivity extends Fragment implements MonthViewAdapter.OnDa
     }
 
     public void createEvent(View view){
-        Intent intent = new Intent(getActivity(), Addeventmenu.class);
-        startActivity(intent);
+     //   Intent intent = new Intent(getActivity(), Addeventmenu.class);
+      //  startActivity(intent);
     }
 
 //    @Override

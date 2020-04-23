@@ -52,7 +52,7 @@ public class ViewEventsOnClickActivity extends AppCompatActivity implements View
 
     public void createEvent(View view){
 
-        Intent intent = new Intent(this, Addeventmenu.class);
+        Intent intent = new Intent(this, EventActivity.class);
         startActivity(intent);
     }
 

@@ -43,10 +43,10 @@ public class CalendarActivity extends AppCompatActivity implements PopupMenu.OnM
                         openFragment(new MonthViewActivity());
                         return true;
                     case R.id.action_week:
-                        openFragment(new WeekActivity());
+                       // openFragment(new WeekActivity());
                         return true;
                     case R.id.action_day:
-                        openFragment(new DateActivity());
+                     //   openFragment(new DateActivity());
                         return true;
                     case R.id.action_search:
 
@@ -69,7 +69,7 @@ public class CalendarActivity extends AppCompatActivity implements PopupMenu.OnM
     }
 
     public void createEvent(View view){
-        Intent intent = new Intent(this, Addeventmenu.class);
+        Intent intent = new Intent(this, EventActivity.class);
         startActivity(intent);
     }
 
