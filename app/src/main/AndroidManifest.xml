@@ -13,31 +13,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CalendarActivity"></activity>
-        <activity android:name=".ViewEventsOnClickActivity" />
-        <activity android:name=".MonthViewActivity" />
+        <activity android:name=".ui.CalendarActivity"></activity>
+        <activity android:name=".ui.ViewEventsOnClickActivity" />
+        <activity android:name=".ui.month.MonthViewActivity" />
         <activity
-            android:name=".createAccountActivity"
+            android:name=".ui.account.createAccountActivity"
             android:label="@string/create_account"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".ui.account.MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".ui.account.MainActivity" />
         </activity>
-        <activity android:name=".EventActivity">
+        <activity android:name=".ui.events.EventActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WeekActivity" />
-        <activity android:name=".DateActivity" />
-        <activity android:name=".MenuActivity" />
 
-        <activity android:name=".MainActivity" />
+        <activity android:name=".ui.MenuActivity" />
+
+        <activity android:name=".ui.account.MainActivity" />
 
         <meta-data
             android:name="com.parse.SERVER_URL"

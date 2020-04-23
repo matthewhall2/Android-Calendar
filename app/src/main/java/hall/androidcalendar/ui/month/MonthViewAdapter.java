@@ -1,4 +1,4 @@
-package hall.androidcalendar;
+package hall.androidcalendar.ui.month;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import hall.androidcalendar.Day;
+
 import static hall.androidcalendar.R.*;
 
 public class MonthViewAdapter extends RecyclerView.Adapter<MonthViewAdapter.ViewHolder>   {
@@ -22,8 +24,7 @@ public class MonthViewAdapter extends RecyclerView.Adapter<MonthViewAdapter.View
     Context context;
     ArrayList<Day> days;
     private OnDayClickListener mOnDayClickListener;
-    CustomLinearLayoutManager l;
-    private AppCompatActivity activity;
+
 
     public MonthViewAdapter(Context context, ArrayList<Day> arrayList, OnDayClickListener onDayClickListener) {
         this.mOnDayClickListener = onDayClickListener;
@@ -79,10 +80,7 @@ public class MonthViewAdapter extends RecyclerView.Adapter<MonthViewAdapter.View
         }
         holder.t.setText(days.get(position).getMonthDayNumber());
 
-        EventInMonthViewAdapter adapter =new EventInMonthViewAdapter(context, days.get(position).getEvents());
 
-
-        CustomLinearLayoutManager layoutManager = new CustomLinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
 
     }
 

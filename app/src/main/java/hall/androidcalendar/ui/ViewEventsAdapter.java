@@ -1,4 +1,4 @@
-package hall.androidcalendar;
+package hall.androidcalendar.ui;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+
+import hall.androidcalendar.R;
 
 public class ViewEventsAdapter extends  RecyclerView.Adapter<ViewEventsAdapter.ViewHolder>  {
     Context context;

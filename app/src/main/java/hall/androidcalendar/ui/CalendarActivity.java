@@ -1,4 +1,4 @@
-package hall.androidcalendar;
+package hall.androidcalendar.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,11 +14,18 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.ParseUser;
 
+import hall.androidcalendar.Calendar;
+import hall.androidcalendar.ui.events.EventActivity;
+import hall.androidcalendar.EventManager;
+import hall.androidcalendar.R;
+import hall.androidcalendar.UserManager;
+import hall.androidcalendar.ui.month.MonthViewActivity;
+
 public class CalendarActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     BottomNavigationView bottomNavigation;
     Fragment currentFragment;
-    static Calendar currentCalendar= new Calendar(1);
+    public static Calendar currentCalendar= new Calendar(1);
     UserManager userManager;
     static EventManager eventManager;
 

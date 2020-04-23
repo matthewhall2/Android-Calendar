@@ -1,4 +1,4 @@
-package hall.androidcalendar;
+package hall.androidcalendar.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.ParseUser;
+
+import hall.androidcalendar.R;
+import hall.androidcalendar.ui.month.MonthViewActivity;
 
 public abstract class MenuActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 

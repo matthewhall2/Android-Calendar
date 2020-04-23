@@ -20,7 +20,7 @@ public class UserManager  {
      * Constructor for UserManager. It creates an arrayList of users and it loads
      * users' username, email, and password stored in users.txt to the program.
      */
-    UserManager(Context context)  {
+   public UserManager(Context context)  {
         this.context = context;
 
     }

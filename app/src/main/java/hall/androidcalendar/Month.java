@@ -86,7 +86,7 @@ public class Month implements Comparable<Month>{
         return wrapAfterSize;
     }
 
-    String getMonthName(){
+    public String getMonthName(){
         return this.monthName;
     }
 

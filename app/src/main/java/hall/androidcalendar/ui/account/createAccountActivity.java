@@ -1,4 +1,4 @@
-package hall.androidcalendar;
+package hall.androidcalendar.ui.account;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -18,6 +18,9 @@ import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import hall.androidcalendar.R;
+import hall.androidcalendar.UserManager;
 
 public class createAccountActivity extends AppCompatActivity {
 

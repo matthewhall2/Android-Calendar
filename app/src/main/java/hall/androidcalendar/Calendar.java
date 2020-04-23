@@ -12,6 +12,7 @@ import com.restfb.json.JsonObject;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,12 +93,31 @@ public class Calendar {
     }
 
 
+    public String[] getDate(){
+        String[]  r = new String[2];
+        LocalDateTime datetime = LocalDateTime.now();
+        LocalTime time = datetime.toLocalTime();
+        LocalDate date = datetime.toLocalDate();
+
+        String startDay = date.getDayOfWeek().name().substring(0, 3);
+        startDay += "., " + date.getMonth().toString().substring(0, 3) + " ";
+        startDay += date.getDayOfMonth() + ", " + date.getYear();
+        time = time.withMinute(0);
+        time = time.withHour(time.getHour() + 1);
+        r[0] = startDay;
+        r[0] += "   " + time.toString();
+        r[1] += startDay + "    " + time.withHour(time.getHour() + 1).toString();
+        return r;
+    }
+
+
+
     public void updateCalendar(){
         this.events.clear();
         this.loadEvents(this.calNum);
     }
 
-    Month getCurrentMonth(){
+    public Month getCurrentMonth(){
         return this.currentMonth;
     }
 

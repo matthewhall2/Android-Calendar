@@ -1,4 +1,4 @@
-package hall.androidcalendar;
+package hall.androidcalendar.ui.month;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +20,14 @@ import com.parse.ParseUser;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+
+import hall.androidcalendar.Calendar;
+import hall.androidcalendar.Day;
+import hall.androidcalendar.Event;
+import hall.androidcalendar.Month;
+import hall.androidcalendar.R;
+import hall.androidcalendar.ui.CalendarActivity;
+import hall.androidcalendar.ui.ViewEventsOnClickActivity;
 
 public class MonthViewActivity extends Fragment implements MonthViewAdapter.OnDayClickListener {
 

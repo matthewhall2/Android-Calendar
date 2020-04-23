@@ -1,4 +1,4 @@
-package hall.androidcalendar;
+package hall.androidcalendar.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+
+import hall.androidcalendar.Event;
+import hall.androidcalendar.ui.events.EventActivity;
+import hall.androidcalendar.R;
 
 public class ViewEventsOnClickActivity extends AppCompatActivity implements ViewEventsAdapter.OnEventClickListener {
 
