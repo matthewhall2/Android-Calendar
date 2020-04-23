@@ -34,7 +34,7 @@ public class MonthViewAdapter extends RecyclerView.Adapter<MonthViewAdapter.View
     @NonNull
     @Override
     public MonthViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(layout.content_events, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(layout.content_monthview_event, parent, false);
 
         return new ViewHolder(view, this.mOnDayClickListener);
 
