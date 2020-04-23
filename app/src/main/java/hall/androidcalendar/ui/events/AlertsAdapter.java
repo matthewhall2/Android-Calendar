@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +13,8 @@ import java.nio.channels.AlreadyBoundException;
 import java.util.ArrayList;
 
 import hall.androidcalendar.Alert;
+import hall.androidcalendar.R;
+
 import static hall.androidcalendar.R.*;
 
 public class AlertsAdapter extends RecyclerView.Adapter<AlertsAdapter.ViewHolder> {
@@ -33,8 +36,7 @@ public class AlertsAdapter extends RecyclerView.Adapter<AlertsAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull AlertsAdapter.ViewHolder holder, int position) {
-
-
+            holder.alert.setText(this.alerts.get(position).toString());
     }
 
     @Override
@@ -44,8 +46,10 @@ public class AlertsAdapter extends RecyclerView.Adapter<AlertsAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        TextView alert;
         public ViewHolder(View itemView){
             super(itemView);
+            alert = itemView.findViewById(R.id.alert_view);
 
         }
     }

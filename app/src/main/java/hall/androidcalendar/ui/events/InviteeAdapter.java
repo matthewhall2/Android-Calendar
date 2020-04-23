@@ -9,11 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-
+import static hall.androidcalendar.R.*;
 public class InviteeAdapter extends RecyclerView.Adapter<InviteeAdapter.ViewHolder> {
 
     Context context;
     ArrayList<String> invitees;
+
 
     public InviteeAdapter(Context context, ArrayList<String> invitees){
         this.context = context;

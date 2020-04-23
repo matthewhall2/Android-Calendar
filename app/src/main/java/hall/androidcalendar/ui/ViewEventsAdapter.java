@@ -91,17 +91,7 @@ public class ViewEventsAdapter extends  RecyclerView.Adapter<ViewEventsAdapter.V
                     }
                 }
             });
-            share.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (onEventClickListener != null) {
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            onEventClickListener.onShareClick(position);
-                        }
-                    }
-                }
-            });
+
 
 
             time = itemView.findViewById(R.id.eventTime);

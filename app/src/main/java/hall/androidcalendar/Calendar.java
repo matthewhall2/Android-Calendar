@@ -106,7 +106,8 @@ public class Calendar {
         time = time.withHour(time.getHour() + 1);
         r[0] = startDay;
         r[0] += "   " + time.toString();
-        r[1] += startDay + "    " + time.withHour(time.getHour() + 1).toString();
+        r[1] = startDay;
+        r[1] += "    " + time.withHour(time.getHour() + 1).toString();
         return r;
     }
 

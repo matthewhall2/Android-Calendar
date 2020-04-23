@@ -40,5 +40,8 @@
     <string name="notes">Event Notes</string>
     <string name="event_invite">Invite</string>
     <string name="event_add_alert">Add</string>
+    <string name="event_tags">Add some tags</string>
+    <string name="nav_drawer_open">open</string>
+    <string name="nav_drawer_close">close</string>
 
 </resources>

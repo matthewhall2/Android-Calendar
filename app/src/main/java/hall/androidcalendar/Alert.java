@@ -16,6 +16,14 @@ public class Alert{
 
     }
 
+    public Alert(){
+
+    }
+
+    public String toString(){
+        return "10 mins before";
+    }
+
 
     public String getAlert(){
         return this.description;

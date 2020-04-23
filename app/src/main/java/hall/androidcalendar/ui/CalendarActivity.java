@@ -6,12 +6,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 import com.parse.ParseUser;
 
 import hall.androidcalendar.Calendar;
@@ -21,52 +26,37 @@ import hall.androidcalendar.R;
 import hall.androidcalendar.UserManager;
 import hall.androidcalendar.ui.month.MonthViewActivity;
 
-public class CalendarActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+public class CalendarActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, NavigationView.OnNavigationItemSelectedListener {
 
     BottomNavigationView bottomNavigation;
     Fragment currentFragment;
     public static Calendar currentCalendar= new Calendar(1);
     UserManager userManager;
     static EventManager eventManager;
+    private DrawerLayout drawer;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         this.userManager = new UserManager(this);
         eventManager = new EventManager();
-        bottomNavigation = findViewById(R.id.bottom_navigation);
+        drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.nav_drawer_open, R.string.nav_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
-        bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
-        currentFragment = new MonthViewActivity();
-        openFragment(new MonthViewActivity());
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new MonthViewActivity()).commit();
+        navigationView.setCheckedItem(R.id.nav_month);
     }
 
-    BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
-            item -> {
-                switch (item.getItemId()) {
-                    case R.id.action_month:
-                        openFragment(new MonthViewActivity());
-                        return true;
-                    case R.id.action_week:
-                       // openFragment(new WeekActivity());
-                        return true;
-                    case R.id.action_day:
-                     //   openFragment(new DateActivity());
-                        return true;
-                    case R.id.action_search:
 
-                        break;
-                    case R.id.action_logout:
-                        ParseUser.logOut();
-                        finish();
-                        break;
-//                    case R.id.action_switch_calendars:
-//                        break;
-                }
-                return false;
-            };
 
     public void openFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -106,6 +96,21 @@ public class CalendarActivity extends AppCompatActivity implements PopupMenu.OnM
     }
 
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_month:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new MonthViewActivity()).commit();
 
+                break;
+            case R.id.nav_week:
+                break;
+            case R.id.nav_day:
+                break;
+
+        }
+        return true;
+    }
 }
 
