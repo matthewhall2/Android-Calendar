@@ -1,6 +1,8 @@
 package hall.androidcalendar.ui.events;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -14,6 +16,7 @@ import hall.androidcalendar.Alert;
 import hall.androidcalendar.Event;
 import hall.androidcalendar.R;
 import hall.androidcalendar.ui.CalendarActivity;
+import hall.androidcalendar.ui.SelectDate;
 
 public class EventActivity extends AppCompatActivity {
     private EditText event_name;
@@ -58,6 +61,11 @@ public class EventActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public void setDate(View view){
+        Intent intent = new Intent(this, SelectDate.class);
+        startActivity(intent);
     }
 
 

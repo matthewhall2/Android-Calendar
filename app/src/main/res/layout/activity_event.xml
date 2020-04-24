@@ -20,7 +20,9 @@
     <RelativeLayout
         android:id="@+id/info_start"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="setDate">
 
         <TextView
             android:id="@+id/tv_event_start"
@@ -48,7 +50,9 @@
     <RelativeLayout
         android:id="@+id/info_end"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="setDate">
 
         <TextView
             android:id="@+id/tv_event_end"

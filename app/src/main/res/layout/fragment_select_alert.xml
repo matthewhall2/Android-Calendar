@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/colorAccent">
+        <RadioButton
+            android:id="@+id/btn_alert_at_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            
+            android:text="@string/alert_at_time" />
+
+        <RadioButton
+            android:id="@+id/alert_10_mins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/alert_10_mins" />
+
+        <RadioButton
+            android:id="@+id/alert_30_mins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alert_30_mins" />
+
+        <RadioButton
+            android:id="@+id/alert_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alert_hour_before" />
+
+        <RadioButton
+            android:id="@+id/alert_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alert_day_before" />
+
+    </RadioGroup>
+
+</LinearLayout>
