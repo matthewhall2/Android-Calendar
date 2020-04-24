@@ -49,8 +49,20 @@
     <string name="alert_30_mins">30 minutes before</string>
     <string name="alert_hour_before">1 hour before</string>
     <string name="alert_day_before">1 day before</string>
+    <string name="alert_custom">Custom</string>
+
+    <string name="alert_r_day">Every Day until the event</string>
+    <string name="alert_r_week">Every Week Until the event</string>
+    <string name="alert_r_month">Every Month until the event</string>
+
+    <string name="event_r_never">Never</string>
+    <string name="event_r_daily">Daily</string>
+    <string name="event_r_weekly">Weekly</string>
+    <string name="event_r_monthly">Monthly</string>
+    <string name="event_r_yearly">Yearly</string>
 
     <string name="alert_days">Every day until the event</string>
     <string name="alert_weeks">Every</string>
+    <string name="action_logout">Logout</string>
 
 </resources>

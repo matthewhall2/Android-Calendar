@@ -2,9 +2,13 @@ package hall.androidcalendar.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -32,6 +36,7 @@ public class CalendarActivity extends AppCompatActivity implements PopupMenu.OnM
     Fragment currentFragment;
     public static Calendar currentCalendar= new Calendar(1);
     UserManager userManager;
+    RelativeLayout rl;
     static EventManager eventManager;
     private DrawerLayout drawer;
 
@@ -41,6 +46,7 @@ public class CalendarActivity extends AppCompatActivity implements PopupMenu.OnM
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        rl = findViewById(R.id.rl_duration_selector);
         setSupportActionBar(toolbar);
         this.userManager = new UserManager(this);
         eventManager = new EventManager();
@@ -54,9 +60,32 @@ public class CalendarActivity extends AppCompatActivity implements PopupMenu.OnM
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new MonthViewActivity()).commit();
         navigationView.setCheckedItem(R.id.nav_month);
+
+        TextView tv = new TextView(this);
+        RelativeLayout.LayoutParams par = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        par.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
+        par.rightMargin = 10;
+        rl.addView(tv, par);
+
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_options, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.action_logout){
+            ParseUser.logOut();
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     public void openFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -70,25 +99,21 @@ public class CalendarActivity extends AppCompatActivity implements PopupMenu.OnM
         startActivity(intent);
     }
 
-    public void showPopup(View v) {
-        PopupMenu popup = new PopupMenu(this, v);
-        MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.tolol_bar, popup.getMenu());
-        popup.show();
-    }
+
 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.add_cal:
-                createCalendar();
-                return true;
-            case R.id.cal_switch:
-
-                return true;
-            default:
-                return false;
-        }
+//        switch (item.getItemId()) {
+//            case R.id.add_cal:
+//                createCalendar();
+//                return true;
+//            case R.id.cal_switch:
+//
+//                return true;
+//            default:
+//                return false;
+//        }
+        return true;
     }
 
     public void createCalendar(){

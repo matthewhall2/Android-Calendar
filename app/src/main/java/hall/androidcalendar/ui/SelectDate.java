@@ -11,7 +11,7 @@ public class SelectDate extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.feagment_select_date);
+        setContentView(R.layout.fragment_select_date);
 
     }
 }

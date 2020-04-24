@@ -93,7 +93,7 @@ public class Calendar {
     }
 
 
-    public String[] getDate(){
+    public static String[] getDate(){
         String[]  r = new String[2];
         LocalDateTime datetime = LocalDateTime.now();
         LocalTime time = datetime.toLocalTime();
