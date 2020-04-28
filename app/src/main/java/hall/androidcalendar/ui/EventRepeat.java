@@ -17,18 +17,19 @@ import java.time.LocalDate;
 import hall.androidcalendar.Calendar;
 import hall.androidcalendar.R;
 
-public class EventRepeat extends AppCompatActivity implements DateSelectRDialog.DateDialogListener {
+public class EventRepeat extends AppCompatActivity implements DateSelectRDialog.DateDialogListener, EventRepSelectDialog.EventRepListener {
     RelativeLayout rl;
     TextView tv;
     EditText ed;
     RelativeLayout.LayoutParams par;
+    TextView durationOption;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_event_repeat);
         rl = findViewById(R.id.rl_duration_selector);
-
+        durationOption = findViewById(R.id.tv_duration_option);
         tv = new TextView(this);
         ed = new EditText(this);
         par = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -42,14 +43,20 @@ public class EventRepeat extends AppCompatActivity implements DateSelectRDialog.
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openDialog();
+                openDateDialog();
             }
         });
+        durationOption.setText("Until date");
     }
 
-    public void openDialog(){
+    public void openDateDialog(){
         DateSelectRDialog dateSelectRDialog = new DateSelectRDialog();
         dateSelectRDialog.show(getSupportFragmentManager(), "date");
+    }
+
+    public void openCustomDialog(View view){
+        EventRepSelectDialog eventRepSelectDialog = new EventRepSelectDialog();
+        eventRepSelectDialog.show(getSupportFragmentManager(), "event");
     }
 
         public void showPopup(View v) {
@@ -64,13 +71,15 @@ public class EventRepeat extends AppCompatActivity implements DateSelectRDialog.
                     case R.id.dur_until:
                         rl.removeViewAt(1);
                         rl.addView(tv,1,  par);
-
                         tv.setText(Calendar.getDate()[0].substring(0, 18));
+                        durationOption.setText("Until Date");
                         return true;
 
                     case R.id.dur_num:
-                        rl.removeViewAt(1);                        rl.addView(ed, 1, par);
+                        rl.removeViewAt(1);
+                        rl.addView(ed, 1, par);
                         ed.setText("1");
+                        durationOption.setText("Number of Times");
                         return true;
 
                 }
@@ -82,6 +91,11 @@ public class EventRepeat extends AppCompatActivity implements DateSelectRDialog.
 
     @Override
     public void sendDate(LocalDate date) {
-        tv.setText(date.toString());
+        tv.setText(Calendar.getDateString(date));
+    }
+
+    @Override
+    public void sendFreq(int number, String type) {
+
     }
 }

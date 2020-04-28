@@ -2,6 +2,8 @@ package hall.androidcalendar;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -92,6 +94,12 @@ public class Calendar {
 
     }
 
+    public static LocalDateTime[] getCurrentDate(){
+        LocalDateTime first = LocalDateTime.now().withMinute(0).withSecond(0).withNano(0).plusHours(1);
+        LocalDateTime second = first.plusHours(1);
+        return new LocalDateTime[]{first, second};
+    }
+
 
     public static String[] getDate(){
         String[]  r = new String[2];
@@ -103,12 +111,18 @@ public class Calendar {
         startDay += "., " + date.getMonth().toString().substring(0, 3) + " ";
         startDay += date.getDayOfMonth() + ", " + date.getYear();
         time = time.withMinute(0);
-        time = time.withHour(time.getHour() + 1);
+        time = time.withHour(time.plusHours(1).getHour());
         r[0] = startDay;
         r[0] += "   " + time.toString();
         r[1] = startDay;
-        r[1] += "    " + time.withHour(time.getHour() + 1).toString();
+        r[1] += "    " + time.withHour(time.plusHours(1).getHour()).toString();
         return r;
+    }
+
+    public static String getDateString(LocalDate date){
+        return date.getDayOfWeek().name().substring(0, 3) + "., " +
+                date.getMonth().name().substring(0, 3) + ". " +  date.getDayOfMonth() +
+                ", " + date.getYear();
     }
 
 
@@ -606,6 +620,8 @@ public class Calendar {
         return this.calendarName;
     }
 
+    @NonNull
+    @Override
     public String toString() {
         //print event.date(), event, alert.date(), alert.
         return this.calendarName;

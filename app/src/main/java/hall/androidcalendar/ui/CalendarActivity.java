@@ -3,7 +3,6 @@ package hall.androidcalendar.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +45,7 @@ public class CalendarActivity extends AppCompatActivity implements PopupMenu.OnM
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        rl = findViewById(R.id.rl_duration_selector);
+      //  rl = findViewById(R.id.rl_duration_selector);
         setSupportActionBar(toolbar);
         this.userManager = new UserManager(this);
         eventManager = new EventManager();
@@ -67,14 +66,14 @@ public class CalendarActivity extends AppCompatActivity implements PopupMenu.OnM
 
         par.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
         par.rightMargin = 10;
-        rl.addView(tv, par);
+     //   rl.addView(tv, par);
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_options, menu);
+        getMenuInflater().inflate(R.menu.menu_settings, menu);
         return true;
     }
 
@@ -98,7 +97,6 @@ public class CalendarActivity extends AppCompatActivity implements PopupMenu.OnM
         Intent intent = new Intent(this, EventActivity.class);
         startActivity(intent);
     }
-
 
 
     @Override
@@ -127,7 +125,6 @@ public class CalendarActivity extends AppCompatActivity implements PopupMenu.OnM
             case R.id.nav_month:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new MonthViewActivity()).commit();
-
                 break;
             case R.id.nav_week:
                 break;

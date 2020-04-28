@@ -27,7 +27,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.account.MainActivity" />
         </activity>
-        <activity android:name=".ui.EventRepeat"
+        <activity android:name=".ui.account.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,11 +36,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.SelectAlert"/>
-        <activity android:name=".ui.account.MainActivity"/>
+        <activity android:name=".ui.events.EventActivity"/>
         <activity android:name=".ui.SelectDate"/>
-        <activity android:name=".ui.MenuActivity" />
 
-        <activity android:name=".ui.events.EventActivity" />
+
+        <activity android:name=".ui.EventRepeat" />
 
         <meta-data
             android:name="com.parse.SERVER_URL"

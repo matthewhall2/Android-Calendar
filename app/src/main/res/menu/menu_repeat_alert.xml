@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/alert_rep_hour"
+        android:title="hour"/>
+
+    <item
+        android:id="@+id/alert_rep_day"
+        android:title="day"
+        />
+
+    <item
+        android:id="@+id/alert_rep_week"
+        android:title="week"/>
+
+    <item android:id="@+id/alert_rep_month"
+        android:title="months"/>
+
+    <item android:id="@+id/alert_rep_year"
+        android:title="year"/>
+
+</menu>

@@ -11,8 +11,6 @@
 
         </item>
 
-
-
         <item
             android:id="@+id/nav_week"
             android:icon="@android:drawable/ic_menu_week"
@@ -27,5 +25,19 @@
 
         </item>
     </group>
+
+    <item android:title="Settings">
+        <menu>
+            <item
+                android:id="@+id/nav_add_cal"
+                android:icon="@android:drawable/ic_menu_my_calendar"
+                android:title="Add Calendar"/>
+
+            <item
+                android:id="@+id/nav_del_cal"
+                android:icon="@android:drawable/ic_delete"
+                android:title="Delete" />
+        </menu>
+    </item>
 
 </menu>

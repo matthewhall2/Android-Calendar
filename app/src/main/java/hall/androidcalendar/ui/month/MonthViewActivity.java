@@ -31,16 +31,15 @@ import hall.androidcalendar.ui.ViewEventsOnClickActivity;
 
 public class MonthViewActivity extends Fragment implements MonthViewAdapter.OnDayClickListener {
 
-    RecyclerView month;
-    TextView t;
+    private TextView t;
 
-    LocalDate currentDate;
-    Month currentMonth;
-    MonthViewAdapter adapter;
-    ArrayList<Day> currentMonthDays;
-    LocalDate monthViewDate;
-    Calendar currentCalendar;
-    int whichCal;
+   private LocalDate currentDate;
+  private  Month currentMonth;
+   private MonthViewAdapter adapter;
+   private ArrayList<Day> currentMonthDays;
+   private LocalDate monthViewDate;
+  private  Calendar currentCalendar;
+    private int whichCal;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,7 +63,7 @@ public class MonthViewActivity extends Fragment implements MonthViewAdapter.OnDa
 //        FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(this);
 //
 //        layoutManager.setJustifyContent(JustifyContent.FLEX_START);
-        month = view.findViewById(R.id.calView);
+        RecyclerView month = view.findViewById(R.id.calView);
         month.setHasFixedSize(true);
         month.addItemDecoration(new DividerItemDecoration(getActivity(),
                 DividerItemDecoration.HORIZONTAL));
@@ -93,10 +92,7 @@ public class MonthViewActivity extends Fragment implements MonthViewAdapter.OnDa
         day.add(d3);
 
 
-//        currentMonth.getMonth().get(0).addEvent(new Event("b"));
-//        currentMonth.getMonth().get(0).addEvent(new Event("b"));
-//        currentMonth.getMonth().get(0).addEvent(new Event("c"));
-//        currentMonth.getMonth().get(0).addEvent(new Event("d"));
+
         if(currentCalendar == null){
             Log.d("cal", "null");
         }

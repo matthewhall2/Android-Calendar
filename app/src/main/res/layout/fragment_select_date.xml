@@ -4,12 +4,14 @@
     android:layout_height="match_parent">
 
     <CalendarView
+        android:id="@+id/event_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
     </CalendarView>
 
     <TimePicker
+        android:id="@+id/event_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:timePickerMode="spinner"
@@ -20,23 +22,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:text="cancel"
-            android:layout_weight="1">
-
-        </Button>
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:text="done"
-            android:layout_weight="1"
-            ></Button>
-    </LinearLayout>
+        android:orientation="horizontal"/>
 
 
 </LinearLayout>

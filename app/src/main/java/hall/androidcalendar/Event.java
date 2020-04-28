@@ -28,6 +28,12 @@ public class Event implements Comparable<Event>{
         this.durationSeriesNames.addAll(series);
     }
 
+    public Event(){
+        LocalDateTime[] dates = Calendar.getCurrentDate();
+        this.startTime = dates[0];
+        this.endTime = dates[1];
+    }
+
     public Event(String name){
         this.name = name;
     }

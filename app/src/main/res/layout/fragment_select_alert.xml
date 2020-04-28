@@ -98,13 +98,13 @@
         android:text="@string/alert_r_month"
         />
 
-    <RadioButton
-        android:id="@+id/alert_r_custom"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:textSize="18sp"
-        android:text="@string/alert_custom"
-        />
+        <RadioButton
+            android:id="@+id/alert_r_custom"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:onClick="setAlert"
+            android:text="@string/alert_custom"
+            android:textSize="18sp" />
 
     </RadioGroup>
 

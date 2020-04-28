@@ -58,8 +58,12 @@
             android:id="@+id/event_r_custom"
             android:layout_width="match_parent"
             android:layout_height="55dp"
+            android:onClick="openCustomDialog"
             android:text="@string/alert_custom"
-            android:textSize="18sp" />
+            android:textSize="18sp">
+
+
+        </RadioButton>
 
     </RadioGroup>
 
@@ -68,6 +72,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
+        android:background="@drawable/radio_group_corners"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup2">
@@ -85,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="'duratoin"
+                android:text="Duration"
                 android:textSize="18sp" />
 
             <TextView

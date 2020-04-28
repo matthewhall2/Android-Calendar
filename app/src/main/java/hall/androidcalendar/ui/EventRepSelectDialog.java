@@ -7,36 +7,47 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.CalendarView;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.appcompat.widget.AppCompatSpinner;
 
-import java.time.Instant;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.util.Date;
 
 import hall.androidcalendar.R;
 
-public class DateSelectRDialog extends AppCompatDialogFragment {
+public class EventRepSelectDialog extends AppCompatDialogFragment {
+     EventRepSelectDialog.EventRepListener lsitener;
 
-    private CalendarView calendarView;
-    private DateDialogListener lsitener;
-    private LocalDate date;
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.fragment_select_repeat_until, null);
-
+        View view = inflater.inflate(R.layout.dialog_rep_event, null);
+        AppCompatSpinner spinner = view.findViewById(R.id.event_rep_type);
+        TextView textview = view.findViewById(R.id.mon);
+        textview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(textview.isSelected()){
+                    textview.setSelected(false);
+                }else{
+                    textview.setSelected(true);
+                }
+            }
+        });
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.event_rep_menu, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
         builder.setView(view)
-                .setTitle("Select Date")
+                .setTitle("Select Frequency")
                 .setNegativeButton("cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -47,17 +58,9 @@ public class DateSelectRDialog extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                       lsitener.sendDate(date);
+
                     }
                 });
-        calendarView = view.findViewById(R.id.cal_view_event_r);
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                date = LocalDateTime.of(year, month + 1, dayOfMonth, 0, 0).toLocalDate();
-            }
-        });
-
         return builder.create();
     }
 
@@ -65,14 +68,14 @@ public class DateSelectRDialog extends AppCompatDialogFragment {
     public void onAttach(@NonNull Context context){
         super.onAttach(context);
         try {
-            lsitener = (DateDialogListener)context;
+            lsitener = (EventRepSelectDialog.EventRepListener)context;
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString()
                     + "must implement dateDialog");
         }
     }
 
-    public interface DateDialogListener{
-        void sendDate(LocalDate date);
+    public interface EventRepListener{
+        void sendFreq(int number, String type);
     }
 }
