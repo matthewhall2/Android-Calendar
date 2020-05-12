@@ -1,6 +1,7 @@
 package hall.androidcalendar.ui;
 
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,6 +33,7 @@ public class EventRepeat extends AppCompatActivity implements DateSelectRDialog.
         durationOption = findViewById(R.id.tv_duration_option);
         tv = new TextView(this);
         ed = new EditText(this);
+        ed.setInputType(InputType.TYPE_CLASS_NUMBER);
         par = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
 

@@ -52,7 +52,7 @@ public class MonthViewActivity extends Fragment implements MonthViewAdapter.OnDa
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
         t = view.findViewById(R.id.monthName);
 
@@ -121,20 +121,9 @@ public class MonthViewActivity extends Fragment implements MonthViewAdapter.OnDa
         Button forw = view.findViewById(R.id.btn_forw);
         TextView t  = view.findViewById(R.id.tvMonday);
 
-
-        forw.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                nextMonth();
-            }
-        });
+        forw.setOnClickListener(v -> nextMonth());
         Button back = view.findViewById(R.id.btn_back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                prevMonth();
-            }
-        });
+        back.setOnClickListener(v -> prevMonth());
         return view;
 
     }

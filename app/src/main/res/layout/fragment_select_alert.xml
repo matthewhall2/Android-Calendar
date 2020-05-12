@@ -12,6 +12,7 @@
         android:text="individual"
         android:textSize="18sp"/>
     <RadioGroup
+        android:id="@+id/rg_ind"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@color/colorAccent"
@@ -68,6 +69,7 @@
         android:text="Repeated"/>
 
     <RadioGroup
+        android:id="@+id/rg_rep"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@color/colorAccent"
@@ -102,7 +104,6 @@
             android:id="@+id/alert_r_custom"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:onClick="setAlert"
             android:text="@string/alert_custom"
             android:textSize="18sp" />
 

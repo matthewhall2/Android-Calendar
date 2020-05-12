@@ -32,7 +32,8 @@ public class DateTimeSelectDialog extends AppCompatDialogFragment implements Pop
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
+        lsitener = (DateDialogListener)getTargetFragment();
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.fragment_select_date, null);
         date = LocalDateTime.now().withSecond(0).withNano(0);
@@ -78,7 +79,7 @@ public class DateTimeSelectDialog extends AppCompatDialogFragment implements Pop
     public void onAttach(@NonNull Context context){
         super.onAttach(context);
         try {
-            lsitener = (DateTimeSelectDialog.DateDialogListener)context;
+         //   lsitener = (DateDialogListener)getTargetFragment();
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString()
                     + "must implement dateDialog");

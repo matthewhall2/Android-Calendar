@@ -22,6 +22,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.parse.ParseUser;
 
+import java.time.LocalDateTime;
+
 import hall.androidcalendar.Calendar;
 import hall.androidcalendar.ui.events.EventActivity;
 import hall.androidcalendar.EventManager;
@@ -29,7 +31,8 @@ import hall.androidcalendar.R;
 import hall.androidcalendar.UserManager;
 import hall.androidcalendar.ui.month.MonthViewActivity;
 
-public class CalendarActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, NavigationView.OnNavigationItemSelectedListener {
+public class CalendarActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener,
+        NavigationView.OnNavigationItemSelectedListener{
 
     BottomNavigationView bottomNavigation;
     Fragment currentFragment;
@@ -94,8 +97,10 @@ public class CalendarActivity extends AppCompatActivity implements PopupMenu.OnM
     }
 
     public void createEvent(View view){
-        Intent intent = new Intent(this, EventActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, EventActivity.class);
+//        startActivity(intent);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new EventActivity()).commit();
     }
 
 
@@ -134,5 +139,7 @@ public class CalendarActivity extends AppCompatActivity implements PopupMenu.OnM
         }
         return true;
     }
+
+
 }
 

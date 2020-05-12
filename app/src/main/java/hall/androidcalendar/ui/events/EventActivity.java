@@ -2,11 +2,18 @@ package hall.androidcalendar.ui.events;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,9 +30,12 @@ import hall.androidcalendar.ui.CalendarActivity;
 import hall.androidcalendar.ui.DateSelectRDialog;
 import hall.androidcalendar.ui.DateTimeSelectDialog;
 import hall.androidcalendar.ui.EventRepeat;
+import hall.androidcalendar.ui.SelectAlert;
 import hall.androidcalendar.ui.SelectDate;
 
-public class EventActivity extends AppCompatActivity implements DateTimeSelectDialog.DateDialogListener {
+public class EventActivity extends Fragment implements DateTimeSelectDialog.DateDialogListener,
+        AlertRepSelectDialog.AlertDialogListener {
+
     private EditText event_name;
     private EditText tags;
     private EditText location;
@@ -39,54 +49,85 @@ public class EventActivity extends AppCompatActivity implements DateTimeSelectDi
     public  Event event;
     private boolean isStart;
 
+    private RelativeLayout info_start;
+    private RelativeLayout info_end;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_event);
         calendar = CalendarActivity.currentCalendar;
-        startTime = findViewById(R.id.tv_event_start_info);
-        endTime = findViewById(R.id.tv_event_end_info);
+//        setContentView(R.layout.activity_event);
+
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view =inflater.inflate(R.layout.activity_event, container, false);
+        this.info_start = view.findViewById(R.id.info_start);
+        this.info_end = view.findViewById(R.id.info_end);
+        this.info_start.setOnClickListener(new RelativeLayout.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setStartDate();
+            }
+        });
+        this.info_end.setOnClickListener(new RelativeLayout.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setEndDate();
+            }
+        });
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        startTime = view.findViewById(R.id.tv_event_start_info);
+        endTime = view.findViewById(R.id.tv_event_end_info);
         LocalDateTime[] dates  = Calendar.getCurrentDate();
         startTime.setText(this.getDateString(dates[0]));
         endTime.setText(this.getDateString(dates[1]));
-        event_name = findViewById(R.id.event_name);
-        tags = findViewById(R.id.event_tags);
-        alerts = findViewById(R.id.reminders);
-        invitees = findViewById(R.id.invitees);
-        location = findViewById(R.id.event_location);
+        event_name = view.findViewById(R.id.event_name);
+        tags = view.findViewById(R.id.event_tags);
+        alerts = view.findViewById(R.id.reminders);
+        invitees = view.findViewById(R.id.invitees);
+        location = view.findViewById(R.id.event_location);
 
         ArrayList<Alert>  alert = new ArrayList<>();
         Alert al = new Alert();
         alert.add(al);
-        AlertsAdapter alertsAdapter = new AlertsAdapter(this, alert);
-        LinearLayoutManager alertsLayoutManager = new LinearLayoutManager(this);
+        AlertsAdapter alertsAdapter = new AlertsAdapter(this.getActivity(), alert);
+        LinearLayoutManager alertsLayoutManager = new LinearLayoutManager(this.getActivity());
         alerts.setAdapter(alertsAdapter);
         alerts.setLayoutManager(alertsLayoutManager);
 
         ArrayList<String> invites = new ArrayList<>();
-        InviteeAdapter inviteeAdapter = new InviteeAdapter(this, invites);
-        LinearLayoutManager inviteeLayoutManager = new LinearLayoutManager(this);
+        InviteeAdapter inviteeAdapter = new InviteeAdapter(this.getActivity(), invites);
+        LinearLayoutManager inviteeLayoutManager = new LinearLayoutManager(this.getActivity());
         invitees.setAdapter(inviteeAdapter);
         invitees.setLayoutManager(inviteeLayoutManager);
         event = new Event();
 
     }
 
-    public void setStartDate(View view){
+    public void setStartDate(){
        this.isStart = true;
         DateTimeSelectDialog dateSelectRDialog = new DateTimeSelectDialog();
-        dateSelectRDialog.show(getSupportFragmentManager(), "date");
+        dateSelectRDialog.setTargetFragment(this, 0);
+        dateSelectRDialog.show(this.getActivity().getSupportFragmentManager(), "date");
     }
 
-    public void setEndDate(View view){
+    public void setEndDate(){
         this.isStart = false;
         DateTimeSelectDialog dateSelectRDialog = new DateTimeSelectDialog();
-        dateSelectRDialog.show(getSupportFragmentManager(), "date");
-
+        dateSelectRDialog.setTargetFragment(this, 0);
+        dateSelectRDialog.show(getActivity().getSupportFragmentManager(), "date");
     }
 
     public void repEvent(View view){
-        Intent intent = new Intent(this, EventRepeat.class);
+        Intent intent = new Intent(getActivity(), EventRepeat.class);
         startActivity(intent);
     }
 
@@ -96,6 +137,10 @@ public class EventActivity extends AppCompatActivity implements DateTimeSelectDi
                 ", " + date.getYear() + ", " + date.getHour() + ":" + date.getMinute();
     }
 
+    public void selectAlert(View view){
+        Intent intent = new Intent(getActivity(), SelectAlert.class);
+        startActivity(intent);
+    }
 
     @Override
     public void sendDate(LocalDateTime date) {
@@ -106,6 +151,10 @@ public class EventActivity extends AppCompatActivity implements DateTimeSelectDi
             event.setEndTime(date);
             endTime.setText(this.getDateString(date));
         }
+    }
+
+    @Override
+    public void sendAlertInfo(int freq, String type) {
 
     }
 }
