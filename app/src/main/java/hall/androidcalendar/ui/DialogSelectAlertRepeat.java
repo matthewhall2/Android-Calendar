@@ -17,7 +17,7 @@ import androidx.appcompat.widget.AppCompatSpinner;
 
 import hall.androidcalendar.R;
 
-public class AlertRepSelectDialog extends AppCompatDialogFragment {
+public class DialogSelectAlertRepeat extends AppCompatDialogFragment {
     private AppCompatSpinner spinner;
     private EditText selectNum;
     private AlertDialogListener listener;
@@ -26,7 +26,7 @@ public class AlertRepSelectDialog extends AppCompatDialogFragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         try {
-            listener = (AlertDialogListener) context;
+            listener = (AlertDialogListener)getTargetFragment();
         }catch(ClassCastException e){
             throw new ClassCastException(context.toString() + "must implement sendAlertInfo");
         }

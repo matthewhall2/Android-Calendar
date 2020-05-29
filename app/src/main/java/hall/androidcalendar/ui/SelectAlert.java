@@ -1,8 +1,6 @@
 package hall.androidcalendar.ui;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,7 +33,7 @@ public class SelectAlert extends AppCompatActivity {
     }
 
     public void setAlert(){
-        AlertRepSelectDialog alertRepSelectDialog = new AlertRepSelectDialog();
-        alertRepSelectDialog.show(getSupportFragmentManager(), "alerts");
+        DialogSelectAlertRepeat dialogSelectAlertRepeat = new DialogSelectAlertRepeat();
+        dialogSelectAlertRepeat.show(getSupportFragmentManager(), "alerts");
     }
 }

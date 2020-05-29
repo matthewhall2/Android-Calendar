@@ -12,12 +12,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -25,16 +23,14 @@ import hall.androidcalendar.Alert;
 import hall.androidcalendar.Calendar;
 import hall.androidcalendar.Event;
 import hall.androidcalendar.R;
-import hall.androidcalendar.ui.AlertRepSelectDialog;
+import hall.androidcalendar.ui.DialogSelectAlertRepeat;
 import hall.androidcalendar.ui.CalendarActivity;
-import hall.androidcalendar.ui.DateSelectRDialog;
-import hall.androidcalendar.ui.DateTimeSelectDialog;
-import hall.androidcalendar.ui.EventRepeat;
+import hall.androidcalendar.ui.DialogSelectEventDateTime;
+import hall.androidcalendar.ui.EventRepeatFragment;
 import hall.androidcalendar.ui.SelectAlert;
-import hall.androidcalendar.ui.SelectDate;
 
-public class EventActivity extends Fragment implements DateTimeSelectDialog.DateDialogListener,
-        AlertRepSelectDialog.AlertDialogListener {
+public class EventActivity extends Fragment implements DialogSelectEventDateTime.DateDialogListener,
+        DialogSelectAlertRepeat.AlertDialogListener {
 
     private EditText event_name;
     private EditText tags;
@@ -51,6 +47,7 @@ public class EventActivity extends Fragment implements DateTimeSelectDialog.Date
 
     private RelativeLayout info_start;
     private RelativeLayout info_end;
+    private LinearLayout linearLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -66,6 +63,7 @@ public class EventActivity extends Fragment implements DateTimeSelectDialog.Date
         View view =inflater.inflate(R.layout.activity_event, container, false);
         this.info_start = view.findViewById(R.id.info_start);
         this.info_end = view.findViewById(R.id.info_end);
+        linearLayout = view.findViewById(R.id.event_create_rep);
         this.info_start.setOnClickListener(new RelativeLayout.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +74,12 @@ public class EventActivity extends Fragment implements DateTimeSelectDialog.Date
             @Override
             public void onClick(View v) {
                 setEndDate();
+            }
+        });
+        linearLayout.setOnClickListener(new LinearLayout.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                repEvent();
             }
         });
         return view;
@@ -112,23 +116,23 @@ public class EventActivity extends Fragment implements DateTimeSelectDialog.Date
 
     }
 
-    public void setStartDate(){
+    private void setStartDate(){
        this.isStart = true;
-        DateTimeSelectDialog dateSelectRDialog = new DateTimeSelectDialog();
+        DialogSelectEventDateTime dateSelectRDialog = new DialogSelectEventDateTime();
         dateSelectRDialog.setTargetFragment(this, 0);
         dateSelectRDialog.show(this.getActivity().getSupportFragmentManager(), "date");
     }
 
-    public void setEndDate(){
+    private void setEndDate(){
         this.isStart = false;
-        DateTimeSelectDialog dateSelectRDialog = new DateTimeSelectDialog();
+        DialogSelectEventDateTime dateSelectRDialog = new DialogSelectEventDateTime();
         dateSelectRDialog.setTargetFragment(this, 0);
         dateSelectRDialog.show(getActivity().getSupportFragmentManager(), "date");
     }
 
-    public void repEvent(View view){
-        Intent intent = new Intent(getActivity(), EventRepeat.class);
-        startActivity(intent);
+    public void repEvent(){
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new EventRepeatFragment()).commit();
     }
 
     private String getDateString(LocalDateTime date){

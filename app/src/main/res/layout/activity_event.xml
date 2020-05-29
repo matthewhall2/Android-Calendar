@@ -78,8 +78,10 @@
     </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/event_create_rep"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="true"
         android:onClick="repEvent"
         android:orientation="vertical">
 
@@ -87,6 +89,7 @@
             android:id="@+id/tv_repeat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             android:text="@string/event_repeat"
             android:textSize="24sp">
 
@@ -95,6 +98,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             android:text="every hour"
             android:textSize="14sp"></TextView>
     </LinearLayout>

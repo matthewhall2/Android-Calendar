@@ -40,7 +40,7 @@
         <activity android:name=".ui.SelectDate"/>
 
 
-        <activity android:name=".ui.EventRepeat" />
+        <activity android:name=".ui.EventRepeatFragment" />
 
         <meta-data
             android:name="com.parse.SERVER_URL"
